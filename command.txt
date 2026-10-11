@@ -1,0 +1,1 @@
+pyinstaller howling_monkey.spec
