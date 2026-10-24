@@ -61,14 +61,14 @@ def listen():
             print(f'\nAudio capture error: {e}')
             break
 
-def update_monkey(db, db_min=0, db_max=90, curve=2.5):
+def update_monkey(db, db_min=20, db_max=85, curve=1):
     level = max(0, min(db, db_max) - db_min) / (db_max - db_min)
     level = level ** curve
-    if level < 0.3:
+    if level < 0.35:
         return monkey_calm_pixmap
-    elif level < 0.75:
+    elif level < 0.5:
         return monkey_annoyed_pixmap
-    elif level < 0.85:
+    elif level < 0.7:
         return monkey_agitated_pixmap
     else:
         return monkey_howling_pixmap
@@ -80,7 +80,7 @@ arc_pixmaps = [
     svg_as_pixmap(resource_path(f'./assets/arc_{i}.svg')) for i in range(1, 15) 
 ]
 
-def lit_arc_count(db, db_min=0, db_max=90, curve=2.5):
+def lit_arc_count(db, db_min=20, db_max=85, curve=1):
     level = max(0, min(db, db_max) - db_min) / (db_max - db_min)
     level = level ** curve
     return min(int(level * len(arc_pixmaps)), len(arc_pixmaps))
