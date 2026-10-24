@@ -7,7 +7,7 @@ A small desktop overlay made using Qt Widgets that takes input from the default 
 - Arc meter that lights up with the volume to convey volume in more direct manner
 - Frameless, draggable, and transparent to be as unobtrusive as possible
 
- ![demo](assets\howler-monkey.gif)
+ ![demo](assets/howler-monkey.gif)
 
 ## How it Works
 A background thread captures audio (44.1 kHz, 16-bit mono) and computes the RMS of each 1024-sample chunk. The RMS is converted to a decibel value so it can be used for volume. The widget polls the latest reading every 50 ms and:
